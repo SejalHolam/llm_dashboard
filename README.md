@@ -2,7 +2,7 @@
 
 A dynamic dashboard built with React + TypeScript to monitor LLM metrics. Users can add, remove, resize, and rearrange widgets on a grid. Each widget fetches mock data and displays it in charts. The dashboard layout persists across page reloads.
 
-# Features
+## Features
 
 - Drag, resize, and rearrange widgets using react-grid-layout
 - Widgets:
@@ -13,7 +13,7 @@ A dynamic dashboard built with React + TypeScript to monitor LLM metrics. Users 
 - Persistent layout using Zustand + localStorage
 - Responsive and styled with Tailwind CSS
 
-# Installation
+## Installation
 
 1. Clone the repository:
 
@@ -46,14 +46,14 @@ src/
 - components/Widget.tsx → Individual widget component with charts
 - services/mockApi.ts → Mock async data for widgets
 
-# Usage
+## Usage
 
 - Click Add Widget buttons to add a new Token, Latency, or Cost widget
 - Drag and resize widgets freely
 -Remove widgets using the Remove button
 -Layout and widget configuration persist across reloads
 
-# Tech Stack
+## Tech Stack
 
 -React + TypeScript
 -Zustand → State management
