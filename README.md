@@ -1,73 +1,69 @@
-# React + TypeScript + Vite
+# LLM Monitoring Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A dynamic dashboard built with React + TypeScript to monitor LLM metrics. Users can add, remove, resize, and rearrange widgets on a grid. Each widget fetches mock data and displays it in charts. The dashboard layout persists across page reloads.
 
-Currently, two official plugins are available:
+# Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Drag, resize, and rearrange widgets using react-grid-layout
+- Widgets:
+  Token Usage (Line Chart)
+  Latency Distribution (Bar Chart)
+  Cost Analysis (Pie Chart)
+- Independent data fetching per widget using React Query
+- Persistent layout using Zustand + localStorage
+- Responsive and styled with Tailwind CSS
 
-## React Compiler
+# Installation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Clone the repository:
 
-## Expanding the ESLint configuration
+git clone <repo-url>
+cd llm-dashboard
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+2. Install dependencies:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+npm install
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+3. Start the development server:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+npm run dev
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+4. Open your browser at http://localhost:5173 (Vite default)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Project Structure
+src/
+├── main.tsx            # Entry point
+├── App.tsx             # Dashboard layout + Add Widget buttons
+├── index.css           # Tailwind/global styles
+├── store/
+│   └── useDashboardStore.ts
+├── components/
+│   └── Widget.tsx
+└── services/
+    └── mockApi.ts      # Mock API data for charts
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- store/useDashboardStore.ts → Manages widgets and grid layout state
+- components/Widget.tsx → Individual widget component with charts
+- services/mockApi.ts → Mock async data for widgets
+
+# Usage
+
+- Click Add Widget buttons to add a new Token, Latency, or Cost widget
+- Drag and resize widgets freely
+-Remove widgets using the Remove button
+-Layout and widget configuration persist across reloads
+
+# Tech Stack
+
+-React + TypeScript
+-Zustand → State management
+-React Query → Server/mocked data fetching
+-React Grid Layout → Grid and drag/resize system
+
+Recharts → Charts
+
+Tailwind CSS → Styling
+
+Vite → Project setup
+
+This README gives clear instructions for anyone to install, run, and use the dashboard, fulfilling the assignment requirement.
