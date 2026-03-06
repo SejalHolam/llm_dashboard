@@ -40,7 +40,7 @@ function App() {
         cols={12}
         rowHeight={30}
         width={window.innerWidth - 50} // responsive
-        onLayoutChange={(newLayout) => setLayout(newLayout)}
+        onLayoutChange={(newLayout) => setLayout([...newLayout])}
       >
         {widgets.map((widget) => {
           const w = layout.find((l) => l.i === widget.id)?.w || 4;
